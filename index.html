@@ -14,13 +14,13 @@
   </head>
   <body>
     <header>
-        <h4>Date</h4>
-        <h4>Time</h4>
+      <h4>Date</h4>
+      <h4>Time</h4>
     </header>
     <main class="container-fluid">
       <section class="row mt-3">
         <!-- search city input -->
-        <div class="col-3 p-3 search-form">
+        <article class="col-3 p-3 search-form">
           <form>
             <div class="mb-3">
               <label for="citySearchInput" class="form-label"
@@ -29,23 +29,70 @@
               <input type="text" class="form-control" id="citySearchInput" />
             </div>
             <div class="d-grid">
-            <button type="submit" class="btn btn-dark ">Search</button>
+              <button type="submit" class="btn btn-dark">Search</button>
             </div>
           </form>
-        </div>
-        <section class="col-5 p-3 ml-3">
-            <div class="tempDisplayContainer">
-                <div>
-                    <div>Name</div>
-                    <div>Icon</div>
-                </div>
-                <div>
-                    <div>Temp:</div>
-                    <div>Wind:</div>
-                    <div>Humidity:</div>
-                </div>
+        </article>
+        <!-- temperature display -->
+        <article class="col-5 p-3 ml-3">
+          <section class="tempDisplayContainer">
+            <div>
+              <h4>Name</h4>
+              <h6>Monday</h6>
+              <div>Icon</div>
             </div>
-        </section>
+            <div>
+              <div>Temp:</div>
+              <div>Wind:</div>
+              <div>Humidity:</div>
+            </div>
+          </section>
+        </article>
+      </section>
+      <!-- second row section -->
+      <section class="row mt-5">
+        <!-- city history -->
+        <article class="col-3 p-3 hiden"></article>
+        <!-- 5 days forecast -->
+        <article class="col-8 p-3 mt-5">
+          <div class="fiveDaysForecast">
+            <section class="forecastBlock">
+              <div id="day">TUE</div>
+              <div id="temp">Temp</div>
+              <div id="icon">Icon</div>
+              <div id="wind">Wind</div>
+              <div id="humidity">Humidity</div>
+            </section>
+            <section class="forecastBlock">
+              <div id="day">WED</div>
+              <div id="temp">Temp</div>
+              <div id="icon">Icon</div>
+              <div id="wind">Wind</div>
+              <div id="humidity">Humidity</div>
+            </section>
+            <section class="forecastBlock">
+              <div id="day">THU</div>
+              <div id="temp">Temp</div>
+              <div id="icon">Icon</div>
+              <div id="wind">Wind</div>
+              <div id="humidity">Humidity</div>
+            </section>
+            <section class="forecastBlock">
+              <div id="day">FRI</div>
+              <div id="temp">Temp</div>
+              <div id="icon">Icon</div>
+              <div id="wind">Wind</div>
+              <div id="humidity">Humidity</div>
+            </section>
+            <section class="forecastBlock">
+              <div id="day">SAT</div>
+              <div id="temp">Temp</div>
+              <div id="icon">Icon</div>
+              <div id="wind">Wind</div>
+              <div id="humidity">Humidity</div>
+            </section>
+          </div>
+        </article>
       </section>
     </main>
 
