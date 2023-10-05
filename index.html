@@ -14,8 +14,8 @@
   </head>
   <body>
     <header>
-      <h4>Date</h4>
-      <h4>Time</h4>
+      <h4 id="currentDate">Date</h4>
+      <h4 id="currentTime">Time</h4>
     </header>
     <main class="container-fluid">
       <section class="row mt-3">
@@ -29,7 +29,7 @@
               <input type="text" class="form-control" id="citySearchInput" />
             </div>
             <div class="d-grid">
-              <button type="submit" class="btn btn-dark">Search</button>
+              <button type="submit" class="btn btn-dark" id="searchCityButton">Search</button>
             </div>
           </form>
         </article>
@@ -37,14 +37,14 @@
         <article class="col-5 p-3 ml-3">
           <section class="tempDisplayContainer">
             <div>
-              <h4>Name</h4>
-              <h6>Monday</h6>
-              <div>Icon</div>
+              <h4 id="cityName">Name</h4>
+              <h6 id="displayDay">Monday</h6>
+              <div id="displayIcon">Icon</div>
             </div>
             <div>
-              <div>Temp:</div>
-              <div>Wind:</div>
-              <div>Humidity:</div>
+              <div id="displayTemp">Temp:</div>
+              <div id="displayWind">Wind:</div>
+              <div id="displayHumidity">Humidity:</div>
             </div>
           </section>
         </article>
@@ -55,7 +55,7 @@
         <article class="col-3 p-3 hiden"></article>
         <!-- 5 days forecast -->
         <article class="col-8 p-3 mt-5">
-          <div class="fiveDaysForecast">
+          <div class="fiveDaysForecast" id="forecast">
             <section class="forecastBlock">
               <div id="day">TUE</div>
               <div id="temp">Temp</div>
