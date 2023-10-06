@@ -1,5 +1,8 @@
 const dayJsObject = dayjs();
 
+dayjs.extend(window.dayjs_plugin_utc);
+dayjs.extend(window.dayjs_plugin_timezone);
+
 const currentDate = document.getElementById("currentDate");
 const currentTime = document.getElementById("currentTime");
 

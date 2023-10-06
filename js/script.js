@@ -17,12 +17,12 @@ const forecast = document.getElementById("forecast");
 export const displayForecast = (data) => {
   let forecastHTML = "";
   data.list.forEach((el, index) => {
-    let fahrenheit = Math.floor((el.main.temp * 9) / 5 + 32);
+    let temp = Math.floor(el.main.temp);
     if (index < 6) {
       let newSection = `
        <section class="forecastBlock">
                 <div></div>
-                <div>${fahrenheit}°F</div>
+                <div>${temp}°F</div>
                 <img
                 src="http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png"
                     alt=${el.weather[0].description}
@@ -41,10 +41,10 @@ export const displayForecast = (data) => {
 //function to display current day weather condition on main screen
 export const displayCurrentDayWeather = (data) => {
   console.log(data);
-  let fahrenheit = (data.main.temp * 9) / 5 + 32;
   let coord = data.coord;
+   let temp = Math.floor(data.main.temp);
   cityName.textContent = data.name;
-  displayTemp.textContent = `${Math.floor(fahrenheit)}°F`;
+  displayTemp.textContent = `${temp}°F`;
   displayWind.textContent = `${data.wind.speed} MPH`;
   displayHumidity.textContent = `${data.main.humidity}%`;
   sky.textContent = data.weather[0].description;
@@ -53,6 +53,7 @@ export const displayCurrentDayWeather = (data) => {
     `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
   );
   displayIcon.setAttribute("alt", data.weather[0].description);
+
 
   getForecast(coord);
 };
