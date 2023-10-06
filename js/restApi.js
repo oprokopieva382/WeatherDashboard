@@ -22,7 +22,7 @@ const getFirstSearch = async (city) => {
 
 //function-request to get forecast data give to displayForecast function to display it 
 const getForecast = async (coordinates) => {
-  const APIURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${APIKEY}&units=metric`;
+  const APIURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${APIKEY}&units=metric`;
   try {
     const response = await fetch(APIURL);
     if (response.ok) {
