@@ -1,4 +1,7 @@
-import { displayCurrentDate, displayCurrentTime } from "./day.js";
+import {
+  displayCurrentDate,
+  displayCurrentTime,
+} from "./day.js";
 import { getFirstSearch, getForecast } from "./restApi.js";
 
 const cityName = document.getElementById("cityName");
@@ -12,11 +15,9 @@ const forecast = document.getElementById("forecast");
 
 //function to display 5 days of weather for search-city
 export const displayForecast = (data) => {
-  console.log(data);
   let forecastHTML = "";
   data.list.forEach((el, index) => {
     let fahrenheit = Math.floor((el.main.temp * 9) / 5 + 32);
-    console.log(fahrenheit);
     if (index < 6) {
       let newSection = `
        <section class="forecastBlock">
@@ -39,6 +40,7 @@ export const displayForecast = (data) => {
 
 //function to display current day weather condition on main screen
 export const displayCurrentDayWeather = (data) => {
+  console.log(data);
   let fahrenheit = (data.main.temp * 9) / 5 + 32;
   let coord = data.coord;
   cityName.textContent = data.name;
@@ -57,4 +59,4 @@ export const displayCurrentDayWeather = (data) => {
 
 displayCurrentDate();
 displayCurrentTime();
-//getFirstSearch("New York");
+//getFirstSearch("Miami");
