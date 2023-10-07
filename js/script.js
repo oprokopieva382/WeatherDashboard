@@ -2,6 +2,7 @@ import {
   displayCurrentDate,
   displayCurrentTime,
   displayTimeZoneDays,
+  displayTimeZoneDay,
 } from "./day.js";
 import { getFirstSearch, getForecast } from "./restApi.js";
 
@@ -47,7 +48,6 @@ export const displayForecast = (data) => {
 
 //function to display current day weather condition on main screen
 export const displayCurrentDayWeather = (data) => {
-  console.log(data);
   let coord = data.coord;
   let temp = Math.floor(data.main.temp);
   cityName.textContent = data.name;
@@ -61,12 +61,12 @@ export const displayCurrentDayWeather = (data) => {
   );
   displayIcon.setAttribute("alt", data.weather[0].description);
 
-  // const dayOfWeek = displayTimeZoneDay(data);
-  // displayDate.textContent = dayOfWeek;
+  const dayOfWeek = displayTimeZoneDay(data);
+  displayDate.textContent = dayOfWeek;
 
   getForecast(coord);
 };
 
 displayCurrentDate();
 displayCurrentTime();
-//getFirstSearch("New York");
+getFirstSearch("New York");

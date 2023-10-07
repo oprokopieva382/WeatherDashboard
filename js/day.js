@@ -39,8 +39,20 @@ const displayTimeZoneDays = (data, index) => {
   return dayOfWeek;
 };
 
+//function to display search city day of the week, day and month
+const displayTimeZoneDay = (data) => {
+  //converts timezone offset in seconds to minutes
+  const timezoneOffsetMinutes = data.timezone / 60;
+  const localTime = dayJsObject.utc().utcOffset(timezoneOffsetMinutes);
+
+  const dayOfWeek = localTime.format("dddd MMM D"); // Format the day of the week
+
+  return dayOfWeek;
+};
+
 export {
   displayCurrentDate,
   displayCurrentTime,
   displayTimeZoneDays,
+  displayTimeZoneDay,
 };
