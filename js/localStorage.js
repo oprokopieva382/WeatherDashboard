@@ -5,8 +5,10 @@ const hidden = document.getElementById("hidden");
 //function to store search city as array in local storage
 const saveToLocalStorage = (value) => {
   let cityArray = JSON.parse(localStorage.getItem("cityName")) || [];
-  cityArray.push(value);
-  localStorage.setItem("cityName", JSON.stringify(cityArray));
+  if (!cityArray.includes(value)) {
+    cityArray.push(value);
+    localStorage.setItem("cityName", JSON.stringify(cityArray));
+  }
 };
 
 //function to get city from local storage create buttons to display and by click search weather again
@@ -25,7 +27,7 @@ const getFromLocalStorage = () => {
       hidden.appendChild(button);
 
       button.addEventListener("click", () => {
-         console.log("Button clicked:", el);
+        console.log("Button clicked:", el);
         getFirstSearch(el);
       });
     });
