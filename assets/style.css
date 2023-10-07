@@ -1,0 +1,66 @@
+:root {
+  --dark: #454545;
+  --light: #e9e9e9;
+  --second: #d4d4d4;
+  --third: #707070;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url(./images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+header {
+  display: flex;
+  justify-content: end;
+  gap: 10%;
+  color: var(--second);
+  padding: 2%;
+}
+.search-form,
+.col-5 {
+  border: 2px solid var(--dark);
+  border-radius: 10px;
+  background-color: rgba(233, 233, 233, 0.5);
+  color: var(var(--dark));
+}
+.container-fluid {
+  max-width: 95%;
+}
+.search-form {
+  margin-right: 25%;
+}
+.tempDisplayContainer {
+  display: flex;
+  padding: 5%;
+  gap: 10%;
+  color: var(--dark);
+}
+.hiden {
+  border: 2px solid var(--dark);
+  border-radius: 10px;
+  background-color: rgba(233, 233, 233, 0.5);
+}
+.hiden {
+  margin-right: 5%;
+  /* visibility: hidden; */
+}
+.fiveDaysForecast {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+
+}
+.forecastBlock {
+  border: 2px solid var(--dark);
+  border-radius: 10px;
+  background-color: rgba(233, 233, 233, 0.8);
+  padding: 2%;
+  width: 23%;
+  text-align: center;
+}
