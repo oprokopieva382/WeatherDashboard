@@ -5,6 +5,7 @@ import {
   displayTimeZoneDay,
 } from "./day.js";
 import { getFirstSearch, getForecast } from "./restApi.js";
+import {saveToLocalStorage} from "./localStorage.js"
 
 const cityName = document.getElementById("cityName");
 const displayDate = document.getElementById("displayDate");
@@ -66,6 +67,19 @@ export const displayCurrentDayWeather = (data) => {
 
   getForecast(coord);
 };
+
+const searchForm = document.getElementById("searchForm");
+const citySearchInput = document.getElementById("citySearchInput");
+
+const handleSearchSubmit = (e) => {
+  e.preventDefault();
+  let cityName = citySearchInput.value.trim();
+  console.log("City Name submitted:", cityName);
+  saveToLocalStorage(cityName);
+  citySearchInput.value = "";
+};
+
+searchForm.addEventListener("submit", handleSearchSubmit);
 
 displayCurrentDate();
 displayCurrentTime();
