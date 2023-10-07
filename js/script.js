@@ -1,9 +1,11 @@
 import {
   displayCurrentDate,
   displayCurrentTime,
+  displayTimeZoneDays,
   displayTimeZoneDay,
 } from "./day.js";
 import { getFirstSearch, getForecast } from "./restApi.js";
+import { saveToLocalStorage, getFromLocalStorage } from "./localStorage.js";
 
 const cityName = document.getElementById("cityName");
 const displayDate = document.getElementById("displayDate");
@@ -13,38 +15,43 @@ const displayWind = document.getElementById("displayWind");
 const displayHumidity = document.getElementById("displayHumidity");
 const sky = document.getElementById("sky");
 const forecast = document.getElementById("forecast");
+const searchForm = document.getElementById("searchForm");
+const citySearchInput = document.getElementById("citySearchInput");
 
 //function to display 5 days of weather for search-city
 export const displayForecast = (data) => {
-  console.log(data);
+  const forecastHTML = [];
 
-  let forecastHTML = "";
-  data.list.forEach((el, index) => {
-    // console.log(el);
-    let temp = Math.floor(el.main.temp);
-    if (index < 6) {
-      let newSection = `
-       <section class="forecastBlock">
-                <div id="dateForForecast"></div>
-                <div>${temp}°F</div>
-                <img
-                src="http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png"
-                    alt=${el.weather[0].description}
-                    width="42"
-                />
-                <div>${el.wind.speed}MPH</div>
-                <div>${el.main.humidity}%</div>
-              </section>
+  for (let index = 1; index < 6; index++) {
+    const el = data.list[index];
+    if (el) {
+      const temp = Math.floor(el.main.temp);
+      const dayOfWeek = displayTimeZoneDays(data.city, index);
+
+      const newSection = `
+        <section class="forecastBlock">
+          <div>${dayOfWeek}</div>
+          <div>${temp}°F</div>
+          <img
+            src="http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png"
+            alt="${el.weather[0].description}"
+            width="42"
+          />
+          <div>${el.wind.speed}MPH</div>
+          <div>${el.main.humidity}%</div>
+        </section>
       `;
-      forecastHTML += newSection;
+
+      forecastHTML.push(newSection);
     }
-  });
-  forecast.innerHTML = forecastHTML;
+  }
+
+  forecast.innerHTML = forecastHTML.join(""); // Join the array into a single string
 };
 
 //function to display current day weather condition on main screen
 export const displayCurrentDayWeather = (data) => {
-  console.log(data);
+    console.log("City name received:", cityName);
   let coord = data.coord;
   let temp = Math.floor(data.main.temp);
   cityName.textContent = data.name;
@@ -64,6 +71,21 @@ export const displayCurrentDayWeather = (data) => {
   getForecast(coord);
 };
 
+
+
+const handleSearchSubmit = (e) => {
+  e.preventDefault();
+  let cityName = citySearchInput.value.trim();
+  console.log("City Name submitted:", cityName);
+  saveToLocalStorage(cityName);
+  getFirstSearch(cityName);
+  citySearchInput.value = "";
+};
+
+searchForm.addEventListener("submit", handleSearchSubmit);
+
+
+getFromLocalStorage()
 displayCurrentDate();
 displayCurrentTime();
 getFirstSearch("New York");
