@@ -5,7 +5,7 @@ import {
   displayTimeZoneDay,
 } from "./day.js";
 import { getFirstSearch, getForecast } from "./restApi.js";
-import {saveToLocalStorage} from "./localStorage.js"
+import { saveToLocalStorage, getFromLocalStorage } from "./localStorage.js";
 
 const cityName = document.getElementById("cityName");
 const displayDate = document.getElementById("displayDate");
@@ -15,6 +15,8 @@ const displayWind = document.getElementById("displayWind");
 const displayHumidity = document.getElementById("displayHumidity");
 const sky = document.getElementById("sky");
 const forecast = document.getElementById("forecast");
+const searchForm = document.getElementById("searchForm");
+const citySearchInput = document.getElementById("citySearchInput");
 
 //function to display 5 days of weather for search-city
 export const displayForecast = (data) => {
@@ -49,6 +51,7 @@ export const displayForecast = (data) => {
 
 //function to display current day weather condition on main screen
 export const displayCurrentDayWeather = (data) => {
+    console.log("City name received:", cityName);
   let coord = data.coord;
   let temp = Math.floor(data.main.temp);
   cityName.textContent = data.name;
@@ -68,19 +71,21 @@ export const displayCurrentDayWeather = (data) => {
   getForecast(coord);
 };
 
-const searchForm = document.getElementById("searchForm");
-const citySearchInput = document.getElementById("citySearchInput");
+
 
 const handleSearchSubmit = (e) => {
   e.preventDefault();
   let cityName = citySearchInput.value.trim();
   console.log("City Name submitted:", cityName);
   saveToLocalStorage(cityName);
+  getFirstSearch(cityName);
   citySearchInput.value = "";
 };
 
 searchForm.addEventListener("submit", handleSearchSubmit);
 
+
+getFromLocalStorage()
 displayCurrentDate();
 displayCurrentTime();
 getFirstSearch("New York");

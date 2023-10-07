@@ -10,7 +10,6 @@ const getFirstSearch = async (city) => {
     const response = await fetch(APIURL);
     if (response.ok) {
       const data = await response.json();
-      // console.log(data);
       displayCurrentDayWeather(data);
     } else {
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -27,7 +26,6 @@ const getForecast = async (coord) => {
     const response = await fetch(APIURL);
     if (response.ok) {
       const data = await response.json();
-      // console.log(data);
       displayForecast(data);
     }
   } catch (err) {
