@@ -35,7 +35,7 @@ header {
 
 /* first row of main style*/
 .search-form,
-.col-5 {
+.col-md-5 {
   border: 2px solid var(--dark);
   border-radius: 10px;
   background-color: rgba(233, 233, 233, 0.5);
@@ -83,4 +83,17 @@ header {
   padding: 1%;
   width: 23%;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .search-form {
+    margin-right: 0;
+    margin-bottom: 10px; /* Add some spacing at the bottom */
+    
+  }
+  .tempDisplayContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }

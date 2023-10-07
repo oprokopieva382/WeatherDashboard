@@ -84,7 +84,6 @@ const handleSearchSubmit = (e) => {
 
 searchForm.addEventListener("submit", handleSearchSubmit);
 
-
 getFromLocalStorage()
 displayCurrentDate();
 displayCurrentTime();

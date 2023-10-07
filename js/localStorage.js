@@ -27,7 +27,6 @@ const getFromLocalStorage = () => {
       hidden.appendChild(button);
 
       button.addEventListener("click", () => {
-        console.log("Button clicked:", el);
         getFirstSearch(el);
       });
     });

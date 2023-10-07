@@ -34,7 +34,8 @@
     <main class="container-fluid">
       <section class="row mt-3">
         <!-- search city input -->
-        <article class="col-3 p-3 search-form">
+      <article class="col-12 col-sm-6 col-md-3 p-3 search-form">
+
           <form id="searchForm">
             <div class="mb-3">
               <label for="citySearchInput" class="form-label"
@@ -50,7 +51,7 @@
           </form>
         </article>
         <!-- temperature display -->
-        <article class="col-5 p-1 ml-3">
+        <article class="col-12 col-md-5 col-sm-6 p-1 ml-3">
           <section class="tempDisplayContainer">
             <div class="cityDescription">
               <h4 id="cityName"></h4>
@@ -71,7 +72,7 @@
         <!-- city history -->
         <article class="col-3 p-3 hidden" id="hidden"></article>
         <!-- 5 days forecast -->
-        <article class="col-8 p-3 mt-5">
+        <article class="col-md-8 p-3 mt-5">
           <div class="fiveDaysForecast" id="forecast"></div>
         </article>
       </section>
