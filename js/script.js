@@ -1,11 +1,12 @@
 import {
   displayCurrentDate,
   displayCurrentTime,
+  displayTimeZoneDay,
 } from "./day.js";
 import { getFirstSearch, getForecast } from "./restApi.js";
 
 const cityName = document.getElementById("cityName");
-const displayDate = document.getElementById("displayDay");
+const displayDate = document.getElementById("displayDate");
 const displayIcon = document.getElementById("displayIcon");
 const displayTemp = document.getElementById("displayTemp");
 const displayWind = document.getElementById("displayWind");
@@ -15,13 +16,16 @@ const forecast = document.getElementById("forecast");
 
 //function to display 5 days of weather for search-city
 export const displayForecast = (data) => {
+  console.log(data);
+
   let forecastHTML = "";
   data.list.forEach((el, index) => {
+    // console.log(el);
     let temp = Math.floor(el.main.temp);
     if (index < 6) {
       let newSection = `
        <section class="forecastBlock">
-                <div></div>
+                <div id="dateForForecast"></div>
                 <div>${temp}°F</div>
                 <img
                 src="http://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png"
@@ -42,7 +46,7 @@ export const displayForecast = (data) => {
 export const displayCurrentDayWeather = (data) => {
   console.log(data);
   let coord = data.coord;
-   let temp = Math.floor(data.main.temp);
+  let temp = Math.floor(data.main.temp);
   cityName.textContent = data.name;
   displayTemp.textContent = `${temp}°F`;
   displayWind.textContent = `${data.wind.speed} MPH`;
@@ -54,10 +58,12 @@ export const displayCurrentDayWeather = (data) => {
   );
   displayIcon.setAttribute("alt", data.weather[0].description);
 
+  const dayOfWeek = displayTimeZoneDay(data);
+  displayDate.textContent = dayOfWeek;
 
   getForecast(coord);
 };
 
 displayCurrentDate();
 displayCurrentTime();
-//getFirstSearch("Miami");
+getFirstSearch("New York");
