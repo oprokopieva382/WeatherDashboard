@@ -71,8 +71,6 @@ export const displayCurrentDayWeather = (data) => {
   getForecast(coord);
 };
 
-
-
 const handleSearchSubmit = (e) => {
   e.preventDefault();
   let cityName = citySearchInput.value.trim();
@@ -83,7 +81,6 @@ const handleSearchSubmit = (e) => {
 };
 
 searchForm.addEventListener("submit", handleSearchSubmit);
-
 
 getFromLocalStorage()
 displayCurrentDate();

@@ -1,5 +1,4 @@
 const dayJsObject = dayjs();
-
 dayjs.extend(dayjs_plugin_utc);
 dayjs.extend(dayjs_plugin_timezone);
 
@@ -18,7 +17,7 @@ const displayCurrentTime = () => {
 
 //function to display days of the week for next 5 days of search city
 const displayTimeZoneDays = (data, index) => {
-   // Converts timezone offset in seconds to minutes
+   // Converts timezone offset from seconds to minutes
   const timezoneOffsetMinutes = data.timezone / 60;
   const localTime = dayJsObject.utc().utcOffset(timezoneOffsetMinutes);
 
