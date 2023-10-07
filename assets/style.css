@@ -15,15 +15,15 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'Poppins', sans-serif;;
+  font-family: "Poppins", sans-serif;
 }
 /* header style*/
 header {
   display: flex;
   justify-content: space-around;
-  align-items:baseline;
+  align-items: baseline;
   color: var(--second);
- padding: 1%;
+  padding: 1%;
 }
 .logo {
   font-size: 30px;
@@ -53,7 +53,9 @@ header {
   gap: 18%;
   color: var(--dark);
 }
-.displayTemp, .displayWind, .displayHumidity {
+.displayTemp,
+.displayWind,
+.displayHumidity {
   font-size: 20px;
   padding: 8px;
 }
@@ -69,13 +71,12 @@ header {
 }
 .hidden {
   margin-right: 5%;
-/* visibility: hidden; */
+  /* visibility: hidden; */
 }
 .fiveDaysForecast {
   display: flex;
   justify-content: center;
   gap: 3%;
-
 }
 .forecastBlock {
   border: 2px solid var(--dark);
@@ -90,7 +91,6 @@ header {
   .search-form {
     margin-right: 0;
     margin-bottom: 10px; /* Add some spacing at the bottom */
-    
   }
   .tempDisplayContainer {
     flex-direction: column;
