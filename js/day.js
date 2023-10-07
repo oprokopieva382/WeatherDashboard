@@ -6,15 +6,18 @@ dayjs.extend(dayjs_plugin_timezone);
 const currentDate = document.getElementById("currentDate");
 const currentTime = document.getElementById("currentTime");
 
+//function to display date of current zone
 const displayCurrentDate = () => {
   currentDate.textContent = dayJsObject.format("MMM D, YYYY");
 };
 
+//function to display time of current zone
 const displayCurrentTime = () => {
   currentTime.textContent = dayJsObject.format("hh:mm A");
 };
 
-const displayTimeZoneDay = (data, index) => {
+//function to display days of the week for next 5 days of search city
+const displayTimeZoneDays = (data, index) => {
    // Converts timezone offset in seconds to minutes
   const timezoneOffsetMinutes = data.timezone / 60;
   const localTime = dayJsObject.utc().utcOffset(timezoneOffsetMinutes);
@@ -39,5 +42,5 @@ const displayTimeZoneDay = (data, index) => {
 export {
   displayCurrentDate,
   displayCurrentTime,
-  displayTimeZoneDay,
+  displayTimeZoneDays,
 };

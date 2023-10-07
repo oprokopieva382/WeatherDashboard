@@ -1,7 +1,7 @@
 import {
   displayCurrentDate,
   displayCurrentTime,
-  displayTimeZoneDay,
+  displayTimeZoneDays,
 } from "./day.js";
 import { getFirstSearch, getForecast } from "./restApi.js";
 
@@ -22,7 +22,7 @@ export const displayForecast = (data) => {
     const el = data.list[index];
     if (el) {
       const temp = Math.floor(el.main.temp);
-      const dayOfWeek = displayTimeZoneDay(data.city, index);
+      const dayOfWeek = displayTimeZoneDays(data.city, index);
 
       const newSection = `
         <section class="forecastBlock">
@@ -61,12 +61,12 @@ export const displayCurrentDayWeather = (data) => {
   );
   displayIcon.setAttribute("alt", data.weather[0].description);
 
-  const dayOfWeek = displayTimeZoneDay(data);
-  displayDate.textContent = dayOfWeek;
+  // const dayOfWeek = displayTimeZoneDay(data);
+  // displayDate.textContent = dayOfWeek;
 
   getForecast(coord);
 };
 
 displayCurrentDate();
 displayCurrentTime();
-getFirstSearch("New York");
+//getFirstSearch("New York");
